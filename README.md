@@ -17,6 +17,6 @@ How it works:
 3. Clicking the "start" button runs the motor
 
 Resources: 
-* (Servo.h Library)[https://docs.arduino.cc/libraries/servo/#Usage/Examples]
+* [Servo.h Library](https://docs.arduino.cc/libraries/servo/#Usage/Examples)
 
 # WORK IN PROGRESS
