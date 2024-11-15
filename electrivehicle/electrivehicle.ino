@@ -1,38 +1,42 @@
 #include <Servo.h>
 
 const int escPin = 9;
-const int setButtonPin = 2;
-const int startButtonPin = 4;
-const int potentiometerPin = A0;
-const int ledPin = 13;
+const int buttonPin = 2;
 
 Servo esc;
-int p; // potentiometer reading
-int speed;
 
-int setState = 0;
-int startState = 0; 
+const double wheelDiameter = 2.875; // inches
+const double circumference = wheelDiameter * 3.1415;
+const int rpm = 5*1300; // voltage * kV rating
+
+double distance = 7.00; // meters
+
+double velocity = rpm * inchToMeters(circumference) / 60; // meters per second
+long time = (int) ((distance / velocity) * 1000); // milliseconds
+
+int buttonState = 0;
 
 void setup(){
   esc.attach(escPin, 1000, 2000);
-  pinMode(ledPin, OUTPUT);
-  pinMode(setButtonPin, INPUT);
-  pinMode(startButtonPin, INPUT);
+  // pinMode(ledPin, OUTPUT);
+  pinMode(buttonPin, INPUT);
 }
 
 void loop(){
-  setState = digitalRead(setButtonPin);
-  startState = digitalRead(startButtonPin);
+  buttonState = digitalRead(startButtonPin);
 
-  if(setState == HIGH){
-    p = analogRead(potentiometerPin);
-    digitalWrite(ledPin, LOW);
+  // starts the vehicle
+  if(buttonState == HIGH){
+    time = distance/velocity
+    esc.write(0);
+    delay(time) // in milliseconds
+    esc.write(90);
   }else{
-    digitalWrite(ledPin, HIGH);
+    return;
   }
+}
 
-  if(startState == HIGH){
-    speed = map(p, 0, 1023, 0, 180); 
-    esc.write(speed);
-  }
+float inchToMeters(float inch){
+  float meters = inch * 0.0254;
+  return meters;
 }
