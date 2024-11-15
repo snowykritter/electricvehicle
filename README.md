@@ -22,7 +22,6 @@ How it works:
 >>>>>>> 1c3a26ab2a73555705869d40759a67bed110b2a2
 
 Resources: 
-* (Servo.h Library)[https://docs.arduino.cc/libraries/servo/#Usage/Examples]
 * [Servo.h Library](https://docs.arduino.cc/libraries/servo/#Usage/Examples)
 
 # WORK IN PROGRESS
